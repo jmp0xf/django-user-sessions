@@ -26,11 +26,11 @@ class SessionStore(DBStore):
     def load(self):
         try:
             data = self._cache.get(self.cache_key, None)
+            self.user_id = data.get('_auth_user_id', None)
         except Exception:
             # Some backends (e.g. memcache) raise an exception on invalid
             # cache keys. If this happens, reset the session. See #17810.
             data = None
-
         if data is None:
             # Duplicate DBStore.load, because we need to keep track
             # of the expiry date to set it properly in the cache.
