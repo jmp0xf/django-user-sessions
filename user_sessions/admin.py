@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import django
 from django.contrib import admin
 from django.utils.timezone import now
